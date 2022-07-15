@@ -1,34 +1,121 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Using this template
 
-## Getting Started
+- Click on the `Use this Template` button, follow the steps to clone this template giving the repository a name of your choice.
+- Run the `npm install` command in the root directory of the project to install all dependencies of the project.
+- Start the Nextjs App using the `npm run dev`  command from the root directory of the project.
 
-First, run the development server:
+- [Using this template](#using-this-template)
+- [Steps to Recreate this template](#steps-to-recreate-this-template)
+  - [Creating your first Next.js app](#creating-your-first-nextjs-app)
+    - [Choosing how to style your app](#choosing-how-to-style-your-app)
+      - [Material-UI](#material-ui)
+      - [Tailwind CSS](#tailwind-css)
+
+# Steps to Recreate this template
+
+To recreate this template you can follow the steps below:
+
+## Creating your first Next.js app
+
+Create your first [Next.js](https://nextjs.org/) app by running the following command:
 
 ```bash
-npm run dev
-# or
-yarn dev
+npx create-next-app <app-name>
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Replacing `<app-name>` with the name of your app.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+### Choosing how to style your app
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+#### Material-UI
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+**Material-UI** is a React UI library for building user interfaces.
 
-## Learn More
+You can add Material-UI and [Material Icons](https://fonts.google.com/icons?icon.set=Material+Icons) to your project by running the following command:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm install @mui/material @emotion/react @emotion/styled @mui/icons-material
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+#### Tailwind CSS
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+**Tailwind CSS** is a utility-first CSS framework for styled-components.
 
-## Deploy on Vercel
+To add Tailwind CSS to your project, run the following command:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+npm install -D tailwindcss postcss autoprefixer
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Initialize Tailwind CSS by running the following command:
+
+```bash
+npx tailwindcss init -p
+```
+
+Initializing tailwindcss will create a `tailwind.config.js` file in your project. By default, Tailwind CSS will watch only html files in your project.<br>
+You can extend the default configuration by adding your own customizations to the `tailwind.config.js` file and editing the `content` property like so:
+
+```js
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    "./pages/**/*.{js,ts,jsx,tsx}",
+    "./components/**/*.{js,ts,jsx,tsx}",
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+};
+```
+
+Finally, add the following Taiwind directives to your CSS file:
+
+`./styles/globals.css`:
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+```
+
+Now for tailwind to work nicely with Material UI, we need to perform a few extra steps as by default some style properties of both fight for precedence causeing unwanted results.
+
+An indepth interoperability guide can be found [here](https://mui.com/material-ui/guides/interoperability/#tailwind-css).
+
+Add the following as the `corePlugins` property of your `tailwind.config.js` file:
+
+```js
+module.exports{
+  corePlugins: {
+    preflight: false,
+  },
+}
+```
+Add the important option, using the id of your app wrapper. For example, `#__next` for Next.js:
+
+```js
+module.exports{
+  important: "#__next",
+}
+```
+
+As a final step, we need to fix the CSS injection order. Most CSS-in-JS solutions inject their styles at the bottom of the HTML `<head>`, which gives MUI precedence over Tailwind CSS. To reduce the need for the important property, you need to change the CSS injection order. Here's how it can be done in MUI by editing the `<App>` component in `pages/_app.js`:
+
+```jsx
+import "../styles/globals.css";
+import { StyledEngineProvider } from "@mui/material/styles";
+
+function MyApp({ Component, pageProps }) {
+  return (
+    <StyledEngineProvider injectFirst>
+      <Component {...pageProps} />
+    </StyledEngineProvider>
+  );
+}
+
+export default MyApp;
+
+```
+
+---
