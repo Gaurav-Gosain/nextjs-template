@@ -1,8 +1,8 @@
 # Using this template
 
-> - Click on the `Use this Template` button, follow the steps to clone this template giving the repository a name of your choice.
-> - Run the `npm install` command in the root directory of the project to install all dependencies of the project.
-> - Start the Nextjs App using the `npm run dev`  command from the root directory of the project.
+### - Click on the <a target="_blank" href="https://github.com/HWTechClub/nextjs-template/generate"><img alt="HTML" title="HyperText Markup Language" src="https://img.shields.io/badge/Use%20This%20Template-informational?style=flat-sqaure&color=2c974b" /></a> button, follow the steps to clone this template giving the repository a name of your choice.
+### - Run the `npm install` command in the root directory of the project to install all dependencies of the project.
+### - Start the Nextjs App using the `npm run dev`  command from the root directory of the project.
 
 ---
 
