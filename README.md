@@ -1,10 +1,17 @@
+# Next.js - Template Repository
+
+Use this repository to follow along with the [Creating your own Web App](https://youtube.com/playlist?list=PLYlB334TcbXGVBqG-7m_udB-QTWQXYCf8) series.
+
 # Using this template
 
-### - Click on the <a target="_blank" href="https://github.com/HWTechClub/nextjs-template/generate"><img alt="HTML" title="HyperText Markup Language" src="https://img.shields.io/badge/Use%20This%20Template-informational?style=flat-sqaure&color=2c974b" /></a> button, follow the steps to clone this template giving the repository a name of your choice.
+### - Click on the <a target="_blank" href="https://github.com/HWTechClub/nextjs-template/generate"><img alt="Use This Template" title="Click the button above or this to copy the template" src="https://img.shields.io/badge/Use%20This%20Template-informational?style=flat-sqaure&color=2c974b" /></a> button, follow the steps to clone this template giving the repository a name of your choice.
+  - #### If the above button doesn't appear, then [**download**](https://github.com/HWTechClub/nextjs-template/archive/refs/heads/main.zip) the ZIP file (<img alt="Use This Template" title="Click the button above or this to copy the template" src="https://img.shields.io/badge/Code%20-informational?style=flat-sqaure&color=2c974b" /> > [Download ZIP](https://github.com/HWTechClub/nextjs-template/archive/refs/heads/main.zip))
 ### - Run the `npm install` command in the root directory of the project to install all dependencies of the project.
-### - Start the Nextjs App using the `npm run dev`  command from the root directory of the project.
+### - Start the Next.js App using the `npm run dev`  command from the root directory of the project.
 
 ---
+
+## Index
 
 - [Using this template](#using-this-template)
 - [Steps to Recreate this template](#steps-to-recreate-this-template)
@@ -55,8 +62,8 @@ Initialize Tailwind CSS by running the following command:
 npx tailwindcss init -p
 ```
 
-Initializing tailwindcss will create a `tailwind.config.js` file in your project. By default, Tailwind CSS will watch only html files in your project.<br>
-You can extend the default configuration by adding your own customizations to the `tailwind.config.js` file and editing the `content` property like so:
+Initializing tailwindcss will create a `tailwind.config.js` file in your project. By default, Tailwind CSS will watch only `.html` files in your project.<br>
+You can extend the default configuration by adding your own customizations to the [`tailwind.config.js`](tailwind.config.js) file and editing the `content` property like so:
 
 ```js
 /** @type {import('tailwindcss').Config} */
@@ -74,7 +81,7 @@ module.exports = {
 
 Finally, add the following Taiwind directives to your CSS file:
 
-`./styles/globals.css`:
+[`./styles/globals.css`](styles/globals.css):
 ```css
 @tailwind base;
 @tailwind components;
@@ -85,7 +92,7 @@ Now for tailwind to work nicely with Material UI, we need to perform a few extra
 
 An indepth interoperability guide can be found [here](https://mui.com/material-ui/guides/interoperability/#tailwind-css).
 
-Add the following as the `corePlugins` property of your `tailwind.config.js` file:
+Add the following as the `corePlugins` property of your[ `tailwind.config.js`](tailwind.config.js) file:
 
 ```js
 module.exports{
@@ -102,7 +109,12 @@ module.exports{
 }
 ```
 
-As a final step, we need to fix the CSS injection order. Most CSS-in-JS solutions inject their styles at the bottom of the HTML `<head>`, which gives MUI precedence over Tailwind CSS. To reduce the need for the important property, you need to change the CSS injection order. Here's how it can be done in MUI by editing the `<App>` component in `pages/_app.js`:
+As a final step, we need to fix the CSS injection order.
+
+Most CSS-in-JS solutions inject their styles at the bottom of the HTML `<head>` tag, which gives MUI precedence over Tailwind CSS.<br>
+To reduce the need for the important property, you need to change the CSS injection order.
+
+Here's how it can be done in MUI by editing the `<App>` component in [`pages/_app.js`](pages/_app.js):
 
 ```jsx
 import "../styles/globals.css";
@@ -117,7 +129,6 @@ function MyApp({ Component, pageProps }) {
 }
 
 export default MyApp;
-
 ```
 
 ---
