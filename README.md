@@ -61,8 +61,8 @@ Initialize Tailwind CSS by running the following command:
 npx tailwindcss init -p
 ```
 
-Initializing tailwindcss will create a `tailwind.config.js` file in your project. By default, Tailwind CSS will watch only html files in your project.<br>
-You can extend the default configuration by adding your own customizations to the `tailwind.config.js` file and editing the `content` property like so:
+Initializing tailwindcss will create a `tailwind.config.js` file in your project. By default, Tailwind CSS will watch only `.html` files in your project.<br>
+You can extend the default configuration by adding your own customizations to the [`tailwind.config.js`](tailwind.config.js) file and editing the `content` property like so:
 
 ```js
 /** @type {import('tailwindcss').Config} */
@@ -80,7 +80,7 @@ module.exports = {
 
 Finally, add the following Taiwind directives to your CSS file:
 
-`./styles/globals.css`:
+[`./styles/globals.css`](styles/globals.css):
 ```css
 @tailwind base;
 @tailwind components;
@@ -91,7 +91,7 @@ Now for tailwind to work nicely with Material UI, we need to perform a few extra
 
 An indepth interoperability guide can be found [here](https://mui.com/material-ui/guides/interoperability/#tailwind-css).
 
-Add the following as the `corePlugins` property of your `tailwind.config.js` file:
+Add the following as the `corePlugins` property of your[ `tailwind.config.js`](tailwind.config.js) file:
 
 ```js
 module.exports{
@@ -108,7 +108,12 @@ module.exports{
 }
 ```
 
-As a final step, we need to fix the CSS injection order. Most CSS-in-JS solutions inject their styles at the bottom of the HTML `<head>`, which gives MUI precedence over Tailwind CSS. To reduce the need for the important property, you need to change the CSS injection order. Here's how it can be done in MUI by editing the `<App>` component in `pages/_app.js`:
+As a final step, we need to fix the CSS injection order.
+
+Most CSS-in-JS solutions inject their styles at the bottom of the HTML `<head>` tag, which gives MUI precedence over Tailwind CSS.<br>
+To reduce the need for the important property, you need to change the CSS injection order.
+
+Here's how it can be done in MUI by editing the `<App>` component in [`pages/_app.js`](pages/_app.js):
 
 ```jsx
 import "../styles/globals.css";
@@ -123,7 +128,6 @@ function MyApp({ Component, pageProps }) {
 }
 
 export default MyApp;
-
 ```
 
 ---
