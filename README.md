@@ -10,6 +10,8 @@ Use this repository to follow along with the [Creating your own Web App](https:/
 
 ---
 
+## Index
+
 - [Using this template](#using-this-template)
 - [Steps to Recreate this template](#steps-to-recreate-this-template)
   - [Creating your first Next.js app](#creating-your-first-nextjs-app)
