@@ -1,11 +1,12 @@
 # Next.js - Template Repository
 
 Use this repository to follow along with the [Creating your own Web App](https://youtube.com/playlist?list=PLYlB334TcbXGVBqG-7m_udB-QTWQXYCf8) series.
+
 # Using this template
 
 ### - Click on the <a target="_blank" href="https://github.com/HWTechClub/nextjs-template/generate"><img alt="Use This Template" title="Click the button above or this to copy the template" src="https://img.shields.io/badge/Use%20This%20Template-informational?style=flat-sqaure&color=2c974b" /></a> button, follow the steps to clone this template giving the repository a name of your choice.
 ### - Run the `npm install` command in the root directory of the project to install all dependencies of the project.
-### - Start the Nextjs App using the `npm run dev`  command from the root directory of the project.
+### - Start the Next.js App using the `npm run dev`  command from the root directory of the project.
 
 ---
 
