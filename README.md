@@ -1,3 +1,6 @@
+# Next.js - Template Repository
+
+Use this repository to follow along with the [Creating your own Web App](https://youtube.com/playlist?list=PLYlB334TcbXGVBqG-7m_udB-QTWQXYCf8) series.
 # Using this template
 
 ### - Click on the <a target="_blank" href="https://github.com/HWTechClub/nextjs-template/generate"><img alt="HTML" title="HyperText Markup Language" src="https://img.shields.io/badge/Use%20This%20Template-informational?style=flat-sqaure&color=2c974b" /></a> button, follow the steps to clone this template giving the repository a name of your choice.
