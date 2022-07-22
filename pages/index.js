@@ -2,6 +2,7 @@ import { Avatar, Button, CircularProgress } from "@mui/material";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../components/Auth/firebaseAuth";
 import { signOut } from "firebase/auth";
+import { motion } from "framer-motion";
 
 export default function Home() {
   const [user, loading, error] = useAuthState(auth);
@@ -16,7 +17,10 @@ export default function Home() {
     }
     if (user) {
       return (
-        <div className="flex flex-col p-4 text-2xl rounded-xl ring gap-y-2">
+        <motion.div
+          initial={{ x: -100, opacity: 0.5 }}
+          animate={{ x: 0, opacity: 1 }}
+          className="flex flex-col p-4 text-2xl rounded-xl ring gap-y-2">
           <div>
             <strong>Name:</strong> {user.displayName}
           </div>
@@ -26,7 +30,7 @@ export default function Home() {
           <div>
             <strong>UID:</strong> {user.uid}
           </div>
-        </div>
+        </motion.div>
       );
     }
   };
