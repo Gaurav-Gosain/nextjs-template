@@ -1,16 +1,64 @@
-import { Button } from "@mui/material";
-import Head from "next/head";
+import { Avatar, Button, CircularProgress, Divider } from "@mui/material";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth } from "../components/Auth/firebaseAuth";
+import { signOut } from "firebase/auth";
+import LogoutIcon from "@mui/icons-material/Logout";
+import { motion } from "framer-motion";
 
 export default function Home() {
+  const [user, loading, error] = useAuthState(auth);
+
+  const signOutFromApp = () => {
+    signOut(auth);
+  };
+
+  const UserInformation = () => {
+    if (user === null) {
+      return null;
+    }
+    if (user) {
+      return (
+        <motion.div
+          animate={{
+            y: [100, -10, 0],
+            opacity: [0.5, 1],
+          }}
+          className="flex flex-col p-4 text-2xl rounded-xl ring gap-y-2">
+          <motion.div
+            animate={{ scale: [0, 1.2, 1] }}
+            className="flex items-center mx-auto">
+            <Avatar className="w-32 h-32" src={user?.photoURL} />
+          </motion.div>
+          <Divider />
+          <div>
+            <strong>Name:</strong> {user.displayName}
+          </div>
+          <div>
+            <strong>Email:</strong> {user.email}
+          </div>
+          <div>
+            <strong>UID:</strong> {user.uid}
+          </div>
+        </motion.div>
+      );
+    }
+  };
+  if (loading)
+    return (
+      <div className="flex items-center justify-center w-screen min-h-screen">
+        <CircularProgress className="text-6xl" />
+      </div>
+    );
   return (
-    <div className="w-screen h-screen flex justify-center items-center">
+    <div className="flex flex-col items-center justify-center w-screen min-h-screen">
       <Button
-        className="p-8 text-3xl rounded-2xl"
-        color="primary"
-        variant="contained"
-      >
-        Welcome to GDSC!
+        className="mb-4"
+        variant="outlined"
+        endIcon={<LogoutIcon />}
+        onClick={signOutFromApp}>
+        Sign Out <strong className="ml-1">{user?.displayName}</strong>
       </Button>
+      <UserInformation />
     </div>
   );
 }
