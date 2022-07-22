@@ -4,12 +4,16 @@ import { auth } from "../components/Auth/firebaseAuth";
 import { signOut } from "firebase/auth";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { motion } from "framer-motion";
+import { useRouter } from "next/router";
 
 export default function Home() {
   const [user, loading, error] = useAuthState(auth);
 
+  const router = useRouter();
+
   const signOutFromApp = () => {
     signOut(auth);
+    router.push("/login");
   };
 
   const UserInformation = () => {
