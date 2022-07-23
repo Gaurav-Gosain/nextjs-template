@@ -27,7 +27,7 @@ export default function Home() {
             y: [100, -10, 0],
             opacity: [0.5, 1],
           }}
-          className="flex flex-col p-4 text-2xl rounded-xl ring gap-y-2">
+          className="flex flex-col p-4 m-4 max-w-sm md:max-w-lg text-xl md:text-2xl rounded-xl ring gap-y-2">
           <motion.div
             animate={{ scale: [0, 1.2, 1] }}
             className="flex items-center mx-auto">
