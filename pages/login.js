@@ -2,6 +2,7 @@ import { Button, CircularProgress } from "@mui/material";
 import { useSignInWithGoogle } from "react-firebase-hooks/auth";
 import { auth } from "../components/Auth/firebaseAuth";
 import GoogleIcon from "@mui/icons-material/Google";
+import Image from "next/future/image";
 
 export default function Login() {
   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
